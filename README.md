@@ -40,7 +40,7 @@ Cuando llega el estribillo, la arena se transforma:
 
 ### 👹 Enemigos
 
-![](assets/README_IMG/tiger.png)
+![](Assets/README_IMG/tiger.png)
 
 No todos los tigres son iguales. Prepárate para enfrentar a:
 
