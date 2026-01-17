@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 80b86bc4a091f0f47af5cb7590a3deda
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - titleTexture: {fileID: 2800000, guid: 694ba5da2f7fae8498388cc3aa072167, type: 3}
+  - lifeIcon: {fileID: 2800000, guid: 811b31360e05b3744a4afab0db085de9, type: 3}
+  - extraLifeIcon: {fileID: 2800000, guid: 0254c3059c376ab4ead233c692cc6e42, type: 3}
+  - bombIcon: {fileID: 2800000, guid: 385b30177cb74a444ad1a8993e914d47, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

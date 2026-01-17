@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b67617be31a574c81124876dd0eda6, type: 3}
+  m_Name: TigerData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Tiger
+  baseSpeed: 10
+  baseHealth: 2
+  damage: 1
+  scoreValue: 5
+  speedGrowthPerRound: 0.1
+  healthGrowthPerRound: 0
+  healthBonusPer5Rounds: 1
+  modelScale: 1.6
+  prefabOverride: {fileID: 538227179472287423, guid: 760a04ed35c71b14ea219e8c5bc5cf34, type: 3}
+  animatorOverride: {fileID: 9100000, guid: 4738d32e8bfb4524fb86fee4b9317290, type: 2}
+  type: 0
+  attackRange: 10
+  fireRate: 1.5
+  projectilePrefab: {fileID: 0}
+  projectileRotationOffset: {x: 0, y: 0, z: 0}
+  visualHeightOffset: 0
+  showCollider: 1
+  colliderType: 0
+  colliderSize: {x: 1, y: 1, z: 7.73}
+  colliderOffset: {x: 0, y: 0, z: 0}

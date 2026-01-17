@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b67617be31a574c81124876dd0eda6, type: 3}
+  m_Name: Data_FireTiger
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Enemy
+  baseSpeed: 2.5
+  baseHealth: 2
+  damage: 1
+  scoreValue: 1
+  speedGrowthPerRound: 0.1
+  healthGrowthPerRound: 0
+  healthBonusPer5Rounds: 1
+  modelScale: 3
+  prefabOverride: {fileID: 538227179472287423, guid: 760a04ed35c71b14ea219e8c5bc5cf34, type: 3}
+  animatorOverride: {fileID: 0}
+  type: 2
+  attackRange: 20
+  fireRate: 1.5
+  projectilePrefab: {fileID: 2889817491286482495, guid: a910ed962c78530428fbd837f1abc411, type: 3}
+  projectileRotationOffset: {x: -90, y: 0, z: 0}
+  visualHeightOffset: 0
+  showCollider: 0
+  colliderType: 0
+  colliderSize: {x: 0.55, y: 1, z: 2}
+  colliderOffset: {x: 0, y: 0.5, z: 0.5}
