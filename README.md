@@ -1,4 +1,4 @@
-![ILERNA TOP DOWN](assets/README_IMG/titulo.png)
+![ILERNA TOP DOWN](Assets/README_IMG/titulo.png)
 
 ### Eres un **JAMÓN** (sí, has leído bien) encerrado en una jaula. Pero no estás solo: una horda infinita de tigres hambrientos intenta devorarte mientras una multitud eufórica observa el espectáculo desde las gradas, gritando y saltando como si fuera la final de un torneo mortal. 
 
