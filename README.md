@@ -4,7 +4,7 @@
 
 Tu única defensa es tu arma y tu capacidad para moverte al ritmo de la música.
 
-![](assets/README_IMG/Captura%20de%20pantalla%202026-01-15%20115431.png)
+![](Assets/README_IMG/Captura%20de%20pantalla%202026-01-15%20115431.png)
 
 ---
 
