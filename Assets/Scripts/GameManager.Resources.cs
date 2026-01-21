@@ -48,6 +48,9 @@ public partial class GameManager : MonoBehaviour
 
     void SubmitScore(int score)
     {
+        if (scoreSubmitted) return;
+        scoreSubmitted = true;
+
         HighScoreEntry entry = new HighScoreEntry { name = playerName, score = score };
         highScoreTable.entries.Add(entry);
         highScoreTable.entries.Sort((a,b) => b.score.CompareTo(a.score));

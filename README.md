@@ -1,4 +1,4 @@
-![ILERNA TOP DOWN](Assets/README_IMG/titulo.png)
+![MEATEST](Assets/ICONS/MEATEST_blurredshadow.png)
 
 ### Eres un **JAMÓN** (sí, has leído bien) encerrado en una jaula. Pero no estás solo: una horda infinita de tigres hambrientos intenta devorarte mientras una multitud eufórica observa el espectáculo desde las gradas, gritando y saltando como si fuera la final de un torneo mortal. 
 
@@ -6,9 +6,10 @@ Tu única defensa es tu arma y tu capacidad para moverte al ritmo de la música.
 
 ![](Assets/README_IMG/Captura%20de%20pantalla%202026-01-15%20115431.png)
 
+## [JUEGA ONLINE AQUÍ](https://santanaolmo.itch.io/meatest)
 ---
 
-## 🎮 Controles
+### 🎮 Controles
 
 | Acción | Tecla / Input |
 | :--- | :--- |
@@ -24,21 +25,21 @@ Tu única defensa es tu arma y tu capacidad para moverte al ritmo de la música.
 
 ---
 
-## 🕹️ Mecánicas de Juego
+### 🕹️ Mecánicas de Juego
 
-### 🎵 Sincronización Musical
+#### 🎵 Sincronización Musical
 Todo en el juego ocurre al ritmo de **"Professional Griefers" de Deadmau5** (128 BPM).
 - **Disparos**: Tus proyectiles se disparan automáticamente en sincronía con el beat (128 BPM).
 - **Aparición**: Los tigres comienzan a salir de sus jaulas justo cuando rompe la música.
 - **Ambiente**: Las luces y el público reaccionan a la intensidad de la canción.
 
-### 🕺 Disco Mode
+#### 🕺 Disco Mode
 Cuando llega el estribillo, la arena se transforma:
 - **Iluminación**: Las luces cambian de color y parpadean al ritmo de la música.
 - **Público**: La multitud en las gradas salta más rápido y con más energía.
 - **Efecto Visual**: Un efecto de "estroboscopio" negro intenta distraerte, dificultando la visión pero aumentando la adrenalina.
 
-### 👹 Enemigos
+#### 👹 Enemigos
 
 ![](Assets/README_IMG/tiger.png)
 
@@ -60,7 +61,7 @@ No todos los tigres son iguales. Prepárate para enfrentar a:
 
 ---
 
-## ⚡ Power-Ups y Habilidades
+### ⚡ Power-Ups y Habilidades
 
 Los enemigos pueden soltar mejoras temporales para ayudarte a sobrevivir. Tienes un **Inventario de 5 Slots** en la parte inferior para ver qué tienes activo.
 
@@ -73,7 +74,7 @@ Los enemigos pueden soltar mejoras temporales para ayudarte a sobrevivir. Tienes
 
 ---
 
-## 🛠️ Detalles Técnicos
+### 🛠️ Detalles Técnicos
 - **Desarrollado en**: Unity 2022/2023.
 - **Lenguaje**: C#.
 - **Arquitectura**:

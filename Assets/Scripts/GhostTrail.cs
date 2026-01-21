@@ -5,6 +5,7 @@ public class GhostTrail : MonoBehaviour
 {
     public float spawnInterval = 0.02f; // Faster spawn for smoother trail
     public float ghostDuration = 0.25f; // Fast fade to align with spawn stop
+    // public Vector3 rotationFix = Vector3.zero; // REMOVED: Moved to GameManager
 
     private Coroutine trailCoroutine;
     private MeshFilter playerMeshFilter;
@@ -46,24 +47,8 @@ public class GhostTrail : MonoBehaviour
         if (playerMeshFilter == null || playerRenderer == null) return;
         if (ObjectPoolManager.Instance == null) return;
 
-        // key for the pool
         string poolKey = "PlayerGhost";
 
-        // Ideally we ask the pool for an object. 
-        // But our pool manager takes a prefab to instantiate if empty.
-        // We need a "Ghost Prefab". 
-        // Since we don't have one on disk, we can't easily pass it to SpawnFromPool 
-        // IF the pool is empty and needs to create new.
-        
-        // WORKAROUND: We will check if we can get one. 
-        // If not, we create a temporary inactive dummy to pass as "prefab" 
-        // OR we modify ObjectPoolManager to handle this.
-        // Let's modify ObjectPoolManager slightly to be more robust, 
-        // OR simpler: Create a runtime prefab once.
-        
-        // Actually, let's just create a new GameObject in SpawnFromPool if prefab is null? 
-        // No, `SpawnFromPool` requires a prefab.
-        
         // Let's create a cached simple GameObject to serve as our "Prefab"
         if (_cachedGhostPrefab == null)
         {
@@ -71,20 +56,25 @@ public class GhostTrail : MonoBehaviour
             _cachedGhostPrefab.AddComponent<MeshFilter>();
             _cachedGhostPrefab.AddComponent<MeshRenderer>();
             _cachedGhostPrefab.AddComponent<GhostObject>();
-            _cachedGhostPrefab.SetActive(false); // Prefabs should be inactive usually
-            // Don't destroy this, keep it in scene or DontDestroyOnLoad
+            _cachedGhostPrefab.SetActive(false); 
             DontDestroyOnLoad(_cachedGhostPrefab); 
         }
 
-        // Use the renderer's transform to ensure we capture the visual's offset/rotation correctly
-        GameObject ghost = ObjectPoolManager.Instance.SpawnFromPool(_cachedGhostPrefab, playerRenderer.transform.position, playerRenderer.transform.rotation);
+        // Calculate Rotation with Fix (FROM GAMEMANAGER)
+        Vector3 rotFix = Vector3.zero;
+        if (GameManager.Instance != null) rotFix = GameManager.Instance.dashRotation;
+
+        Quaternion currentRot = playerRenderer.transform.rotation;
+        Quaternion fixedRot = currentRot * Quaternion.Euler(rotFix);
+
+        GameObject ghost = ObjectPoolManager.Instance.SpawnFromPool(_cachedGhostPrefab, playerRenderer.transform.position, fixedRot);
         
         GhostObject ghostScript = ghost.GetComponent<GhostObject>();
         if (ghostScript != null)
         {
             // Use the current player mesh and material
             // Use playerRenderer.transform.lossyScale to account for parent scaling + child scaling
-            ghostScript.Init(playerMeshFilter.mesh, playerRenderer.transform.position, playerRenderer.transform.rotation, playerRenderer.transform.lossyScale, playerRenderer.material, ghostDuration);
+            ghostScript.Init(playerMeshFilter.mesh, playerRenderer.transform.position, fixedRot, playerRenderer.transform.lossyScale, playerRenderer.material, ghostDuration);
         }
     }
 

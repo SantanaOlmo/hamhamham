@@ -635,15 +635,18 @@ MonoBehaviour:
   playerRotationOffset: {x: 0, y: 90, z: 0}
   playerScale: 0.65
   playerVisualHeightOffset: -0.5
+  dashRotation: {x: 0, y: 90, z: 0}
   playerProjectilePrefab: {fileID: 1099849392887137142, guid: 9f39b879855922c47a6a2c6ae13deeb6, type: 3}
   playerProjectileRotationOffset: {x: -90, y: 0, z: 0}
   playerProjectileScale: 0.2
-  playerProjectileColliderRadius: 0.2
+  playerProjectileColliderRadius: 0.3
   showProjectileCollider: 1
   showPlayerCollider: 0
   playerColliderType: 0
   playerColliderSize: {x: 1, y: 5, z: 4}
   playerColliderOffset: {x: 0, y: 1, z: 0}
+  showLaserSight: 1
+  laserMaterial: {fileID: 2100000, guid: 3fd06fb600635cc4ba60a23760a5167d, type: 2}
   enemyPrefab: {fileID: 538227179472287423, guid: 760a04ed35c71b14ea219e8c5bc5cf34, type: 3}
   enemyScale: 2.25
   enemySpeed: 6
@@ -660,6 +663,8 @@ MonoBehaviour:
   ammoPowerUp: {fileID: 8371050610727514067, guid: cf976a3489cbc2948b2e29aa8518c5c9, type: 3}
   turretPowerUp: {fileID: 4822478240390096909, guid: c86adeae417a24e47a157336923677f9, type: 3}
   turretConstructPrefab: {fileID: 1065111654635720176, guid: 67ce5e08689a03446b18bfeebde66a69, type: 3}
+  turretHealthBarBgMaterial: {fileID: 2100000, guid: 4036e31ace30996459a0829a4db12e76, type: 2}
+  turretHealthBarFillMaterial: {fileID: 2100000, guid: 5da6f237c88a22d41a940bbba05ec2d5, type: 2}
   powerUpScale: 1.65
   powerUpHeight: 1
   shieldScale: 6
@@ -677,16 +682,34 @@ MonoBehaviour:
   shieldIcon: {fileID: 2800000, guid: 94b9f2572ffa35c458abb5876265a309, type: 3}
   timeStopIcon: {fileID: 2800000, guid: 785cd6f796fd1454abc41cab494db5f8, type: 3}
   turretIcon: {fileID: 2800000, guid: 3490a416460622c42863a3149e222045, type: 3}
+  menuTitleScale: 0.534
+  menuTitleSpacing: 110
+  menuVerticalOffset: -11
+  topScorersVerticalOffset: 108
   lifeIcon: {fileID: 2800000, guid: 811b31360e05b3744a4afab0db085de9, type: 3}
   extraLifeIcon: {fileID: 2800000, guid: 0254c3059c376ab4ead233c692cc6e42, type: 3}
   bombIcon: {fileID: 2800000, guid: 385b30177cb74a444ad1a8993e914d47, type: 3}
-  menuBackground: {fileID: 2800000, guid: 2db514c394d35674497b04f3612d812f, type: 3}
-  gameOverBackground: {fileID: 2800000, guid: 13706e3ddf1f73d4da7c4b77970c8aee, type: 3}
   optionsBackground: {fileID: 2800000, guid: ec95db97158065a498837f6bd63f0a3e, type: 3}
   controlsBackground: {fileID: 2800000, guid: ec95db97158065a498837f6bd63f0a3e, type: 3}
-  titleTexture: {fileID: 2800000, guid: 694ba5da2f7fae8498388cc3aa072167, type: 3}
-  menuVideo: {fileID: 0}
-  gameOverVideo: {fileID: 32900000, guid: e688813c776d8924583b5f187cc00d10, type: 3}
+  uiButtonTexture: {fileID: 0}
+  topScorersBoxTexture: {fileID: 0}
+  titleTexture: {fileID: 2800000, guid: 2b717dca8543ab34a90654c1d538d3d8, type: 3}
+  normalCursor: {fileID: 0}
+  normalCursorHotspot: {x: 0, y: 0}
+  hoverCursor: {fileID: 0}
+  hoverCursorHotspot: {x: 0, y: 0}
+  gameCursor: {fileID: 2800000, guid: 13bb9180b52d0fc4ca933ac1d50b81f9, type: 3}
+  gameCursorHotspot: {x: 160, y: 160}
+  menuBackgroundAsset: {fileID: 2800000, guid: ec95db97158065a498837f6bd63f0a3e, type: 3}
+  gameOverBackgroundAsset: {fileID: 32900000, guid: 064fe58fd34c2214bb0cfcce1db2bea6, type: 3}
+  gameOverVideo: {fileID: 32900000, guid: 064fe58fd34c2214bb0cfcce1db2bea6, type: 3}
+  gameOverTexture: {fileID: 0}
+  socialLinks:
+  - icon: {fileID: 2800000, guid: 3295c0a6ad4b9cd4c9d1d8f94d80f54b, type: 3}
+    url: https://github.com/SantanaOlmo/MEATEST
+  socialLinkSize: 50
+  socialLinkSpacing: 20
+  socialLinkBottomMargin: 30
   structureMaterial: {fileID: 2100000, guid: 99f7704f003d919498a794a9045d0fe3, type: 2}
   crowdBaseMaterial: {fileID: 2100000, guid: 67b6d2003fd934040ba4e380829c17cd, type: 2}
   cageMaterial: {fileID: 2100000, guid: 99f7704f003d919498a794a9045d0fe3, type: 2}
@@ -798,6 +821,8 @@ MonoBehaviour:
   gameOverBackground: {fileID: 0}
   optionsBackground: {fileID: 0}
   controlsBackground: {fileID: 0}
+  uiButtonTexture: {fileID: 0}
+  topScorersBoxTexture: {fileID: 0}
   lifeIcon: {fileID: 2800000, guid: 811b31360e05b3744a4afab0db085de9, type: 3}
   extraLifeIcon: {fileID: 2800000, guid: 0254c3059c376ab4ead233c692cc6e42, type: 3}
   bombIcon: {fileID: 2800000, guid: 385b30177cb74a444ad1a8993e914d47, type: 3}
@@ -810,7 +835,7 @@ MonoBehaviour:
   heartIconSize: 40
   showOptions: 0
   showControls: 0
-  videoPlayer: {fileID: 0}
+  videoPlayer: {fileID: 2100145457}
   videoTexture: {fileID: 0}
   blackTexture: {fileID: 0}
 --- !u!328 &2100145457

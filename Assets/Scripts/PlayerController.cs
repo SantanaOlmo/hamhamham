@@ -47,6 +47,15 @@ public partial class PlayerController : MonoBehaviour
         mainCamera = Camera.main;
         
         gameObject.tag = "Player";
+        
+        // Laser Sight Init
+        laserLine = GetComponent<LineRenderer>();
+        if (laserLine == null) laserLine = gameObject.AddComponent<LineRenderer>();
+        laserLine.startWidth = 0.1f;
+        laserLine.endWidth = 0.1f;
+        laserLine.material = new Material(Shader.Find("Sprites/Default"));
+        laserLine.positionCount = 2;
+        laserLine.enabled = false;
     }
     
     void Awake()
@@ -64,7 +73,48 @@ public partial class PlayerController : MonoBehaviour
         HandleRotation();
         HandleShooting();
         HandleDash();
+        UpdateLaser();
     }
+
+    void UpdateLaser()
+    {
+        if (laserLine == null) return;
+        
+        GameManager gm = GameManager.Instance;
+        if (!gm.showLaserSight)
+        {
+            laserLine.enabled = false;
+            return;
+        }
+
+        laserLine.enabled = true;
+        
+        // MATERIAL ASSIGNMENT
+        if (gm.laserMaterial != null)
+        {
+            if (laserLine.sharedMaterial != gm.laserMaterial) 
+                laserLine.sharedMaterial = gm.laserMaterial;
+                
+            // Reset colors to White so the Material controls the visual
+            laserLine.startColor = Color.white;
+            laserLine.endColor = Color.white;
+        }
+        else
+        {
+            // Fallback if no material assigned but enabled
+             laserLine.startColor = Color.red;
+             laserLine.endColor = new Color(1, 0, 0, 0);
+        }
+        
+        Vector3 startPos = transform.position + new Vector3(0, 0.5f, 0); // Slight height offset
+        Vector3 endPos = startPos + transform.forward * 50f; // Long range
+
+        laserLine.SetPosition(0, startPos);
+        laserLine.SetPosition(1, endPos);
+    }
+    
+    // Laser Ref
+    private LineRenderer laserLine;
 
     void FixedUpdate()
     {

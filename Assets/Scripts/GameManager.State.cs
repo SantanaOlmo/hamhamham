@@ -44,8 +44,13 @@ public partial class GameManager : MonoBehaviour
         IsTimeFrozen = false; 
         turretStoredCount = 0; 
         
+        // Reset Round Progress
+        TotalEnemiesThisRound = 0;
+        EnemiesKilledThisRound = 0;
+
         gameOverAlpha = 0f; 
         Time.timeScale = 1f;
+        scoreSubmitted = false;
         
         ClearEnemies(); // In Combat partial
         enemies.Clear();

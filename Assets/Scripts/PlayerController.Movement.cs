@@ -101,16 +101,23 @@ public partial class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance != null && GameManager.Instance.IsIntroSequence) return;
         if (Mouse.current == null) return;
+        if (mainCamera == null) return; // Defensive check
         
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        
+        // ALIGNMENT FIX:
+        // Raycast against a plane at the same height as the Laser/Weapon (approx Player Y + 0.5f)
+        // This prevents parallax issues where the cursor and laser diverge on screen.
+        float aimHeight = transform.position.y + 0.5f; 
+        Plane aimPlane = new Plane(Vector3.up, new Vector3(0, aimHeight, 0));
+        
         float rayDistance;
 
-        if (groundPlane.Raycast(ray, out rayDistance))
+        if (aimPlane.Raycast(ray, out rayDistance))
         {
             Vector3 point = ray.GetPoint(rayDistance);
             Vector3 lookDir = point - transform.position;
-            lookDir.y = 0;
+            lookDir.y = 0; // Keep looking horizontal
             if (lookDir != Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(lookDir);

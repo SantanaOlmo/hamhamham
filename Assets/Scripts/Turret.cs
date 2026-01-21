@@ -73,7 +73,12 @@ public class Turret : MonoBehaviour
             bg.transform.localScale = new Vector3(1.5f, 0.2f, 0.1f);
             Destroy(bg.GetComponent<Collider>());
             Renderer bgRend = bg.GetComponent<Renderer>();
-            if (healthBarBgMat != null) bgRend.material = healthBarBgMat;
+            
+            if (GameManager.Instance != null && GameManager.Instance.turretHealthBarBgMaterial != null)
+            {
+                 bgRend.material = GameManager.Instance.turretHealthBarBgMaterial;
+            }
+            else if (healthBarBgMat != null) bgRend.material = healthBarBgMat;
             else bgRend.material.color = Color.black;
             
             // Foreground (Green)
@@ -85,7 +90,12 @@ public class Turret : MonoBehaviour
             fg.transform.localPosition = new Vector3(0, 0, -0.05f); 
             Destroy(fg.GetComponent<Collider>());
             Renderer fgRend = fg.GetComponent<Renderer>();
-            if (healthBarFullMat != null) fgRend.material = healthBarFullMat;
+            
+            if (GameManager.Instance != null && GameManager.Instance.turretHealthBarFillMaterial != null)
+            {
+                 fgRend.material = GameManager.Instance.turretHealthBarFillMaterial;
+            }
+            else if (healthBarFullMat != null) fgRend.material = healthBarFullMat;
             else fgRend.material.color = Color.green;
             
             healthBarGreen = fg.transform;

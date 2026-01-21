@@ -57,6 +57,8 @@ public partial class GameManager : MonoBehaviour
     // Wave Management
     private bool waitingForWave = false; 
     public Light mainLight; // Cached reference
+    
+    private bool scoreSubmitted = false;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void Initialize()
@@ -134,10 +136,17 @@ public partial class GameManager : MonoBehaviour
         uiManager.lifeIcon = this.lifeIcon != null ? this.lifeIcon : this.healthIcon; 
         uiManager.extraLifeIcon = this.extraLifeIcon; 
         uiManager.bombIcon = this.bombIcon;
-        uiManager.menuBackground = this.menuBackground;
-        uiManager.gameOverBackground = this.gameOverBackground; 
-        uiManager.optionsBackground = this.optionsBackground; // New
-        uiManager.controlsBackground = this.controlsBackground; // New
+        uiManager.bombIcon = this.bombIcon;
+        // uiManager.menuBackground & gameOverBackground now handled dynamically in UIManager via GM Instance
+        uiManager.optionsBackground = this.optionsBackground; 
+        uiManager.controlsBackground = this.controlsBackground;
+        uiManager.uiButtonTexture = this.uiButtonTexture;
+        Debug.Log($"[GameManager Awake] Assigned uiButtonTexture: {(uiButtonTexture != null ? uiButtonTexture.name : "NULL")}");
+        
+        uiManager.topScorersBoxTexture = this.topScorersBoxTexture; 
+        Debug.Log($"[GameManager Awake] Assigned topScorersBoxTexture: {(topScorersBoxTexture != null ? topScorersBoxTexture.name : "NULL")}");
+        
+        uiManager.controlsBackground = this.controlsBackground;
         
         // Use the Icon fields for UI status
         uiManager.shieldIcon = this.shieldIcon;
@@ -151,6 +160,15 @@ public partial class GameManager : MonoBehaviour
 
     void Start()
     {
+        // Re-inject UI Textures to be absolutely sure they are present
+        if (uiManager != null)
+        {
+            uiManager.uiButtonTexture = this.uiButtonTexture;
+            uiManager.topScorersBoxTexture = this.topScorersBoxTexture;
+            uiManager.optionsBackground = this.optionsBackground;
+            uiManager.controlsBackground = this.controlsBackground;
+        }
+
         if (mainLight == null) mainLight = FindFirstObjectByType<Light>();
         StartCoroutine(LoadResources()); // In Resources partial
     }

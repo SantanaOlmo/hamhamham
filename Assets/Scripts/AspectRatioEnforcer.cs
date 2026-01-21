@@ -5,7 +5,8 @@ using UnityEngine;
 public class AspectRatioEnforcer : MonoBehaviour
 {
     // Target aspect ratio (Default 16:9)
-    public float targetAspect = 16.0f / 9.0f;
+    // Target aspect ratio (Default 16:9)
+    public float targetAspect = 1.6f; // 16:10 (960x600)
 
     void Start()
     {

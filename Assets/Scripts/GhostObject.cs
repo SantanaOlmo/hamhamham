@@ -9,22 +9,16 @@ public class GhostObject : MonoBehaviour
 
     private void SetupMaterialForTransparency(Material mat)
     {
-        // URP Lit Shader properties
-        // _Surface: 0 = Opaque, 1 = Transparent
-        if (mat.HasProperty("_Surface")) mat.SetFloat("_Surface", 1.0f);
+        // Simply try to enable Fade/Transparent mode for Standard-like shaders
+        if (mat.HasProperty("_Mode")) mat.SetFloat("_Mode", 2); // Fade
+        if (mat.HasProperty("_Surface")) mat.SetFloat("_Surface", 1); // Transparent logic for URP
         
-        // Use standard blend mode
+        // Generic blend modes
         mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
         mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
         mat.SetInt("_ZWrite", 0);
         
-        // Keywords for URP
-        mat.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
-        mat.DisableKeyword("_SURFACE_TYPE_OPAQUE");
-        
-        // Also handling Standard shader keywords as backup
         mat.EnableKeyword("_ALPHABLEND_ON");
-        
         mat.renderQueue = 3000;
     }
 
@@ -72,8 +66,11 @@ public class GhostObject : MonoBehaviour
         
         if (matInstance == null)
         {
-            matInstance = new Material(originalMat);
-            SetupMaterialForTransparency(matInstance);
+            if (originalMat != null)
+            {
+                 matInstance = new Material(originalMat);
+                 SetupMaterialForTransparency(matInstance);
+            }
         }
         else
         {
@@ -82,14 +79,19 @@ public class GhostObject : MonoBehaviour
             // Ensure alpha is reset to start value in Update loop or here.
         }
 
-        rend.material = matInstance;
+        if (matInstance != null) rend.material = matInstance;
         
         // Reset Alpha tracking
-        // Capture original alpha from the *Original* material? Or the instance?
-        // Reuse the instance's base properties but ensure we start fresh.
-        if (originalMat.HasProperty("_BaseColor")) originalAlpha = originalMat.GetColor("_BaseColor").a;
-        else if (originalMat.HasProperty("_Color")) originalAlpha = originalMat.color.a;
-        else originalAlpha = 1f;
+        if (originalMat != null)
+        {
+            if (originalMat.HasProperty("_BaseColor")) originalAlpha = originalMat.GetColor("_BaseColor").a;
+            else if (originalMat.HasProperty("_Color")) originalAlpha = originalMat.color.a;
+            else originalAlpha = 1f;
+        }
+        else
+        {
+             originalAlpha = 1f;
+        }
         
         // REDUCE OPACITY: User requested "50% more transparent" and "much lower opacity".
         // Multiplying by 0.3f to make it very subtle.
